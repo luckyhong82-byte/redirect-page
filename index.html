@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>단골 등록</title>
+</head>
+<body>
+
+<h2>단골 등록</h2>
+
+<form id="form">
+  <input type="text" name="name" placeholder="이름" required><br><br>
+  <input type="tel" name="phone" placeholder="연락처" required><br><br>
+
+  <button type="submit">등록하기</button>
+</form>
+
+<p id="loading" style="display:none;">처리 중입니다...</p>
+
+<script>
+document.getElementById("form").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  document.getElementById("loading").style.display = "block";
+
+  const formData = new FormData(this);
+
+  fetch("👉여기에_아까_복사한_AppsScript_URL", {
+    method: "POST",
+    body: formData
+  })
+  .then(res => res.json())
+  .then(data => {
+    window.location.href = data.redirect;
+  });
+});
+</script>
+
+</body>
+</html>
